@@ -21,9 +21,9 @@ jobs:
       run: dotnet test Andromeda.Expressions.sln -c Release --no-build
 
     - name: Push Andromeda.Expressions
-      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: dotnet nuget push Andromeda.Expressions.*.*.*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
     
     - name: Push Andromeda.FastExpressions
-      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: dotnet nuget push Andromeda.FastExpressions.*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
