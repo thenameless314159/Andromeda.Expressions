@@ -1,0 +1,21 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: .NET Build
+      run: dotnet build Andromeda.Expressions.sln -c Release
+      
+    - name: .NET Test
+      run: dotnet test Andromeda.Expressions.sln -c Release --no-build
