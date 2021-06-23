@@ -22,6 +22,7 @@ namespace Andromeda.Expressions
         private List<ParameterExpression>? _parameters;
         private List<ParameterExpression>? _variables;
         protected readonly List<Expression> _body;
+        public int Count => _body.Count;
 
         public ParameterExpression? GetParameter(Predicate<ParameterExpression> selector) => 
             _parameters?.Find(selector) ?? null;

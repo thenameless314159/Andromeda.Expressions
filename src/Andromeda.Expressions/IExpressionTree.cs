@@ -9,11 +9,16 @@ namespace Andromeda.Expressions
     /// </summary>
     public interface IExpressionTree : IEnumerable<Expression>
     {
+        /// <summary>
+        /// Get the count of the emitted expressions of this <see cref="IExpressionTree"/> instance.
+        /// </summary>
+        int Count { get; }
+
         IExpressionTree Parameter(Type type, string? name, out ParameterExpression expression);
         IExpressionTree Variable(Type type, string? name, out ParameterExpression expression);
         ParameterExpression? GetParameter(Predicate<ParameterExpression> selector);
         ParameterExpression? GetVariable(Predicate<ParameterExpression> selector);
-       
+
         /// <summary>
         /// Emit an <see cref="Expression"/> to the body of the currently build expression tree.
         /// </summary>
